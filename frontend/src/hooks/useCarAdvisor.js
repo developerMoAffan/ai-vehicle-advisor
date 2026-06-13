@@ -28,7 +28,10 @@ export function useCarAdvisor() {
 
     try {
       // Use environment variable for production, fallback to localhost for dev
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+      const rawApiUrl = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+      // Strip trailing slash if the user accidentally added one
+      const apiUrl = rawApiUrl.endsWith('/') ? rawApiUrl.slice(0, -1) : rawApiUrl;
+      
       const response = await fetch(`${apiUrl}/api/consult`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
