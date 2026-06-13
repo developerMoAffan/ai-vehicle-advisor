@@ -14,9 +14,14 @@ load_dotenv()
 
 app = FastAPI(title="AI Vehicle Purchase Advisor API")
 
+origins = [
+    "https://ai-vehicle-advisor-1.onrender.com", 
+    "http://localhost:5173", # Keep this for local testing
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], 
+    allow_origins=origins, # This allows your frontend to talk to your backend
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
