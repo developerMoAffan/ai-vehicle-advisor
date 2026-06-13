@@ -86,8 +86,9 @@ def _search_car_image(car_name: str) -> str:
     # --- ATTEMPT 1: DuckDuckGo 'Force-India' Search ---
     try:
         ddgs = DDGS()
-        # Localized Search Query to favor Indian road presence from reputable domains
-        query = f"{car_name} car exterior front angle India"
+        # Simplified Search Query to prevent the search engine from hallucinating irrelevant images (like maps) when over-constrained
+        # Added "latest model" to ensure we don't fetch images of older generations
+        query = f"{car_name} car latest model high resolution"
         results = ddgs.images(query, max_results=1)
         if results and len(results) > 0:
             return results[0].get("image")
