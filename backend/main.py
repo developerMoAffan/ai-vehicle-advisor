@@ -18,7 +18,8 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "https://ai-vehicle-advisor-1.onrender.com", 
-        "http://localhost:5173"
+        "http://localhost:5173",
+        "https://5ndf1j9f-5173.inc1.devtunnels.ms"
     ],
     allow_credentials=True,
     allow_methods=["*"],
