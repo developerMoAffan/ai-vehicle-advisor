@@ -1,0 +1,120 @@
+/*
+ * ANIMATIONS.CSS
+ * All @keyframes definitions for the AI Vehicle Advisor.
+ * Each animation has exactly one job — no decorative excess.
+ *
+ * Respects prefers-reduced-motion globally at the bottom of this file.
+ */
+
+/* ===== 1. HERO SCAN-LINE =====
+ * A barely-perceptible 1px horizontal line sweeping top to bottom.
+ * Creates a "scanning" atmosphere without being distracting.
+ */
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+/* ===== 2. RESULT CARD ENTRANCE =====
+ * Slides up 24px + fades in. Intentional ease-out curve
+ * gives a "settling into place" feel.
+ */
+@keyframes cardReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== 3. LOADING DOTS PULSE =====
+ * Each dot scales between 0.6 and 1.0.
+ * Applied with staggered animation-delay (0ms, 200ms, 400ms).
+ */
+@keyframes dotPulse {
+  0%, 100% {
+    transform: scale(0.6);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ===== 4. STATUS TEXT FADE =====
+ * Simple opacity crossfade for the rotating status messages.
+ */
+@keyframes statusFade {
+  0% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ===== 5. INPUT FOCUS GLOW =====
+ * Amber box-shadow expansion on input focus.
+ * Handled via Tailwind transition utilities, but defined here for reference.
+ */
+
+/* ===== UTILITY CLASSES FOR ANIMATIONS ===== */
+
+.animate-scanline {
+  animation: scanline 6s linear infinite;
+}
+
+.animate-card-reveal {
+  animation: cardReveal 400ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-dot-pulse {
+  animation: dotPulse 1.4s ease-in-out infinite;
+}
+
+.animate-status-fade {
+  animation: statusFade 400ms ease-in-out;
+}
+
+/* Stagger delays for the three loading dots */
+.dot-delay-0 {
+  animation-delay: 0ms;
+}
+.dot-delay-1 {
+  animation-delay: 200ms;
+}
+.dot-delay-2 {
+  animation-delay: 400ms;
+}
+
+/* ===== ACCESSIBILITY: REDUCED MOTION =====
+ * Kill all animations for users who prefer reduced motion.
+ * This is non-negotiable.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .animate-scanline,
+  .animate-card-reveal,
+  .animate-dot-pulse,
+  .animate-status-fade {
+    animation: none !important;
+  }
+
+  .animate-card-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

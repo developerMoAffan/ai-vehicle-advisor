@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+/*
+ * DESIGN TOKENS — "Automotive showroom meets terminal intelligence"
+ * 
+ * These CSS custom properties define the entire visual language.
+ * Tailwind v4 uses @theme to expose these as utility classes.
+ * E.g., --color-void becomes bg-void, text-void, border-void, etc.
+ */
+@theme {
+  /* === COLORS === */
+  --color-void: #080A0F;
+  --color-surface: #0D1117;
+  --color-elevated: #161B24;
+  --color-amber: #E8A838;
+  --color-amber-dim: #7A5520;
+  --color-blue: #3B8BEB;
+  --color-text-warm: #F0EDE8;
+  --color-text-muted: #8B8880;
+  --color-text-ghost: #4A4845;
+  --color-border-subtle: #1E242F;
+  --color-border-active: #2E3A4F;
+  --color-success: #2ECC71;
+  --color-warning: #E8A838;
+  --color-danger: #E74C3C;
+
+  /* === TYPOGRAPHY === */
+  --font-display: "Bebas Neue", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+/*
+ * BASE RESETS
+ * Set the dark background and default text color globally.
+ * Smooth scrolling for anchor links / scroll-to behavior.
+ */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-void);
+  color: var(--color-text-warm);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/*
+ * SELECTION STYLING
+ * Amber selection to match the automotive gauge accent.
+ */
+::selection {
+  background-color: rgba(232, 168, 56, 0.25);
+  color: var(--color-text-warm);
+}
+
+/*
+ * SCROLLBAR STYLING (Webkit)
+ * Thin, dark scrollbar that doesn't distract.
+ */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-void);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-active);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-ghost);
+}
